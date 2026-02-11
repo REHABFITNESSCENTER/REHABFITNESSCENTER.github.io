@@ -168,6 +168,8 @@ nav a:hover {
     color: #000;
 }
 
+.full-width-btn { width: 100%; display: block; margin-top: 20px; }
+
 /* --- SECCIONES GENERALES --- */
 section { 
     padding: 4rem 5%;
