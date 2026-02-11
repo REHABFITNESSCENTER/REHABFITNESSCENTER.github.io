@@ -276,4 +276,41 @@ h2 span { border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
     section { padding: 3rem 5%; }
     .hero-btns { flex-direction: column; align-items: center; }
     .btn { width: 100%; max-width: 300px; }
+
+}
+
+/* Video Hero */
+.hero { position: relative; overflow: hidden; }
+.hero-video {
+    position: absolute; top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.4);
+    object-fit: cover;
+}
+
+/* Staff Section */
+.staff-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.staff-card { background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center; flex: 1; min-width: 250px; max-width: 300px; border: 1px solid #333; }
+.staff-img-placeholder { height: 200px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #444; margin-bottom: 1rem; border-radius: 5px; }
+
+/* FAQ Section */
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--card-bg); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); }
+.faq-item h3 { color: var(--accent); margin-bottom: 0.5rem; }
+
+/* Menú Móvil */
+.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--accent); }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav { 
+        display: none; position: absolute; top: 100%; left: 0; 
+        width: 100%; background: rgba(10, 10, 10, 0.98); padding: 1rem; 
+    }
+    nav.active { display: block; }
+    nav ul { flex-direction: column; align-items: center; gap: 1rem; }
+    .hero h1 { font-size: 2.2rem; }
 }
