@@ -40,33 +40,26 @@ header {
     backdrop-filter: blur(5px);
 }
 
-/* --- LOGO Y NOMBRE --- */
 .brand-container {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre el logo y el texto */
-    text-decoration: none; /* Por si quieres hacerlo clickeable después */
+    gap: 15px;
 }
 
 .logo-img {
-    height: 50px; /* Tamaño del logo */
+    height: 50px;
     width: auto;
     object-fit: contain;
-    /* border: 2px solid var(--accent); Quité el borde si es un PNG transparente queda mejor sin él, opcional */
-    border-radius: 5px; /* Ligero redondeo */
+    border-radius: 5px;
 }
 
 .brand-name {
     font-size: 1.5rem;
-    font-weight: 800; /* Letra muy gruesa */
+    font-weight: 800;
     text-transform: uppercase;
-    color: #fff; /* Texto blanco */
+    color: #fff;
     letter-spacing: 1px;
 }
-
-/* Si quieres que "FITNESS" sea dorado, puedes envolverlo en un <span> aparte en el HTML, 
-   pero aquí lo dejamos todo blanco o todo dorado según prefieras. */
-
 
 nav ul { display: flex; gap: 1rem; }
 
@@ -89,19 +82,33 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* --- HERO SECTION --- */
+.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--accent); }
+
+/* --- HERO SECTION CON VIDEO --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://scontent-dfw5-2.cdninstagram.com/v/t51.82787-15/538837081_18374042860176822_6444148284704099294_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzcwNzE3ODI5ODY4ODgyMTM1Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwNzZ4NjA2LnNkci5DMyJ9&_nc_ohc=gyiJ84_9Jl8Q7kNvwESbAQo&_nc_oc=AdmtClQKKLUCjBhN_LQnuO-AWlAWknhu-CfHysj4-C0fTYxiWzMeMzl1tClxd9ISKxw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-dfw5-2.cdninstagram.com&_nc_gid=kZhdWMIs5b7eToxR4eJ5qA&oh=00_AfuzN5JQAsEPPIkk_FeqLK0Sku8famNeYLdct8QPN-ZVRg&oe=6991ABB5');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.4);
+    object-fit: cover;
 }
 
 .hero h1 {
@@ -140,31 +147,27 @@ nav a:hover {
     min-width: 150px;
     text-align: center;
 }
+
 .btn:hover {
     background-color: transparent;
     color: var(--accent);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
+
 .btn-outline {
     background-color: transparent;
     color: var(--accent);
     border: 2px solid var(--accent);
 }
+
 .btn-outline:hover {
     background-color: var(--accent);
     color: #000;
 }
+
 .full-width-btn { width: 100%; display: block; margin-top: 20px; }
 
-.instagram-btn {
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    display: inline-block;
-}
-.instagram-btn:hover { border-color: #E1306C; color: #E1306C; }
-
-/* --- SECCIONES & TEXTO --- */
+/* --- SECCIONES GENERALES --- */
 section { padding: 4rem 5%; }
 h2 {
     text-align: center; font-size: 2.5rem; margin-bottom: 2rem;
@@ -174,7 +177,7 @@ h2 span { border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
 
 /* --- GALERÍA --- */
 .gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
 }
 .gallery-item {
     height: 250px; border-radius: 10px; overflow: hidden; position: relative;
@@ -188,122 +191,37 @@ h2 span { border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
     width: 100%; padding: 10px; text-align: center; font-weight: bold; color: var(--accent);
 }
 
-/* --- BANNER CTA --- */
-.cta-banner {
-    background-color: var(--card-bg);
-    border-top: 1px solid #333; border-bottom: 1px solid #333;
-    padding: 3rem 5%; text-align: center; margin-top: 2rem;
-}
-.cta-content h3 { font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; text-transform: uppercase;}
-.cta-content p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; }
+/* --- STAFF SECTION --- */
+.staff-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.staff-card { background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center; flex: 1; min-width: 250px; max-width: 300px; border: 1px solid #333; }
+.staff-img-placeholder { height: 180px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #444; margin-bottom: 1rem; border-radius: 5px; }
+.staff-schedule { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--accent); font-weight: bold; }
 
-/* --- SERVICIOS --- */
-.services-section { padding-top: 4rem; padding-bottom: 4rem; }
-.services-container {
-    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: stretch;
-}
-.service-box {
-    background: var(--card-bg); padding: 2rem; border-radius: 10px;
-    text-align: center; flex: 1; min-width: 250px; max-width: 350px;
-    border: 1px solid #333; display: flex; flex-direction: column; justify-content: flex-start;
-}
-.service-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
-.service-box h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
-.desc-text { font-size: 0.9rem; color: #999; margin-top: 10px; line-height: 1.5; }
-.free-badge { color: #4CAF50; font-weight: bold; border: 1px solid #4CAF50; display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem;}
-.extra-cost { color: var(--accent); font-weight: bold; border: 1px solid var(--accent); display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem;}
+/* --- FAQ SECTION --- */
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--card-bg); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); text-align: left; }
+.faq-item h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
 
-/* --- HORARIOS --- */
-.schedule-container { display: flex; justify-content: center; overflow-x: auto; }
-.schedule-table {
-    width: 100%; max-width: 800px; border-collapse: collapse;
-    background: var(--card-bg); border-radius: 10px;
-}
-.schedule-table th, .schedule-table td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
-.schedule-table th { background-color: #222; color: var(--accent); text-transform: uppercase; font-size: 0.9rem; }
-
-/* --- PRECIOS (TARJETA TAMAÑO CONTROLADO) --- */
+/* --- PRECIOS --- */
 .pricing-container { display: flex; justify-content: center; }
-
 .price-card {
     background-color: var(--card-bg);
     border: 1px solid var(--accent);
     padding: 2.5rem; 
     width: 100%; 
-    max-width: 400px; /* TAMAÑO IDEAL (Ni chico ni grande) */
+    max-width: 400px;
     text-align: center;
     border-radius: 15px; position: relative;
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-.badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    background-color: var(--accent); color: #000;
-    padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;
-}
-
 .price { font-size: 3.5rem; color: #fff; margin: 0.5rem 0; font-weight: 800; }
-
-.price-breakdown {
-    background: #000; padding: 15px; border-radius: 8px;
-    margin-bottom: 20px; text-align: left;
-    border-left: 3px solid var(--accent);
-}
+.price-breakdown { background: #000; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; border-left: 3px solid var(--accent); }
 .price-breakdown p { display: flex; justify-content: space-between; margin: 5px 0; color: #ccc; font-size: 0.95rem; }
-.small-note { display: block; font-size: 0.75rem; color: #666; font-style: italic; margin-top: 5px; text-align: right;}
-
-.features li {
-    margin: 10px 0; color: var(--text-secondary);
-    display: flex; align-items: center; gap: 10px; text-align: left; font-size: 1rem;
-}
+.features li { margin: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; text-align: left; font-size: 1rem; }
 .features i { color: var(--accent); min-width: 20px; }
-.small-text { font-size: 0.85rem; color: #888; margin-top: -5px; padding-left: 30px;}
-
-/* --- CONTACTO --- */
-.contact-container { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-.info-box, .map-box {
-    flex: 1 1 400px; background: var(--card-bg); padding: 3rem;
-    border-radius: 15px; border: 1px solid #222;
-}
-.info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-.info-item i { font-size: 1.5rem; color: var(--accent); width: 30px; text-align: center; }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.2rem; }
-    nav { display: none; }
-    section { padding: 3rem 5%; }
-    .hero-btns { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 300px; }
-
-}
-
-/* Video Hero */
-.hero { position: relative; overflow: hidden; }
-.hero-video {
-    position: absolute; top: 50%; left: 50%;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    filter: brightness(0.4);
-    object-fit: cover;
-}
-
-/* Staff Section */
-.staff-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
-.staff-card { background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center; flex: 1; min-width: 250px; max-width: 300px; border: 1px solid #333; }
-.staff-img-placeholder { height: 200px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #444; margin-bottom: 1rem; border-radius: 5px; }
-
-/* FAQ Section */
-.faq-container { max-width: 800px; margin: 0 auto; }
-.faq-item { background: var(--card-bg); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); }
-.faq-item h3 { color: var(--accent); margin-bottom: 0.5rem; }
-
-/* Menú Móvil */
-.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--accent); }
-
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     nav { 
@@ -313,4 +231,6 @@ h2 span { border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
     nav.active { display: block; }
     nav ul { flex-direction: column; align-items: center; gap: 1rem; }
     .hero h1 { font-size: 2.2rem; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 300px; }
 }
